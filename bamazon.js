@@ -42,7 +42,7 @@ function afterDisplay() {
         })
         .then(function(answer1) {
         // based on their answer, let them know --
-        connection.query("SELECT item_id FROM products WHERE ?", {item_id: answer1.product_id}, function(err, res) {
+        connection.query("SELECT item_id, product_name FROM products WHERE ?", {item_id: answer1.product_id}, function(err, res) {
             if (err) throw err;
             console.log("PRODUCT ID: ", res[0].item_id, "ITEM: ", res[0].product_name); // Log all results 
             if (res.length === 0){ //There is not a product by that ID
